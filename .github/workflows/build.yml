@@ -23,6 +23,11 @@ jobs:
           echo "$v=${!v}" >> $GITHUB_ENV
         done
 
+    - name: Install 32-bit build dependencies
+      run: |
+        apt-get update
+        apt-get install -y gcc-multilib g++-multilib libc6-dev-i386
+
     - name: Download sources and toolchain
       run: |
         git config --global --add safe.directory '*'
